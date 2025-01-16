@@ -49,7 +49,7 @@ Sigue estos pasos para utilizar el script de manera segura y eficiente. Recuerda
     sudo ./RedScan.py
     ```
     
-
+---
 
 2.  El script te guiará por los siguientes pasos:
     - **Seleccionar la tarjeta de red**: Verás las tarjetas disponibles y deberás elegir la que desees usar.
@@ -58,13 +58,14 @@ Sigue estos pasos para utilizar el script de manera segura y eficiente. Recuerda
     - **Monitorear dispositivos conectados**: Identifica los dispositivos en la red.
     - **Desautenticar dispositivos**: Envía solicitudes de desautenticación (pings) a un dispositivo específico.
     
-
+---
 
 3.  Detener el Envío de Pings:
 
     Mientras se envían pings para desautenticar un dispositivo, el proceso continuará hasta que lo detengas manualmente.  
     Para detenerlo, presiona **CTRL + C** en la ventana correspondiente. Esto finalizará el proceso de desautenticación.
 
+---
 
 4.  Reactivar tu Conexión a Internet
     Durante el uso del programa, tu conexión a Internet será deshabilitada.  
