@@ -4,11 +4,18 @@ import os
 import subprocess
 
 def ejecutar_comando(comando):
-    """Ejecuta un comando en el shell con permisos de administrador."""
+    """Ejecuta un comando en el shell."""
     try:
         subprocess.run(comando, shell=True, check=True)
     except subprocess.CalledProcessError:
         print(f"Error al ejecutar el comando: {comando}")
+
+def abrir_en_ventana(comando, titulo=""):
+    """Abre un comando en una ventana separada (xterm)."""
+    try:
+        subprocess.Popen(f"xterm -hold -T '{titulo}' -e '{comando}'", shell=True)
+    except Exception as e:
+        print(f"Error al abrir la ventana: {e}")
 
 def main():
     print("=== Script de Auditoría de Redes WiFi ===")
@@ -25,18 +32,18 @@ def main():
     ejecutar_comando(f"airmon-ng start {tarjeta_red}")
 
     # Escanear redes disponibles
-    print("\nEscaneando redes WiFi disponibles en la banda 'a'...")
-    print("Presiona CTRL+C cuando encuentres la red que deseas auditar.\n")
-    ejecutar_comando(f"airodump-ng --band a {tarjeta_red}")
-    
+    print("\nAbriendo escáner de redes en una nueva ventana...")
+    abrir_en_ventana(f"airodump-ng --band a {tarjeta_red}", "Escáner de Redes")
+    input("\nObserva la ventana del escáner. Cuando tengas el BSSID y el canal de la red objetivo, vuelve aquí y presiona Enter para continuar.")
+
     # Solicitar información de la red a auditar
     bssid = input("\nIntroduce el BSSID de la red objetivo: ").strip()
     canal = input("Introduce el canal (CH) de la red objetivo: ").strip()
 
     # Monitorear la red específica
-    print(f"\nMonitoreando la red {bssid} en el canal {canal}...")
-    print("Presiona CTRL+C cuando encuentres los dispositivos conectados.\n")
-    ejecutar_comando(f"airodump-ng --band a -c {canal} --bssid {bssid} {tarjeta_red}")
+    print(f"\nAbriendo monitoreo de la red {bssid} en una nueva ventana...")
+    abrir_en_ventana(f"airodump-ng --band a -c {canal} --bssid {bssid} {tarjeta_red}", "Monitoreo de Red")
+    input("\nObserva la ventana del monitoreo. Cuando identifiques el dispositivo objetivo, vuelve aquí y presiona Enter para continuar.")
 
     # Solicitar información del dispositivo objetivo
     station = input("\nIntroduce el STATION (dispositivo objetivo): ").strip()
