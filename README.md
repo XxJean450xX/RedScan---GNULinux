@@ -41,8 +41,6 @@
 
 ## Guia de Uso
 
-# Guía de Uso
-
 Sigue estos pasos para utilizar el script de manera segura y eficiente. Recuerda que este proyecto es **exclusivamente educativo** y debe usarse con los permisos adecuados.
 
 
