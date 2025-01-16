@@ -33,17 +33,19 @@ def main():
 
     # Escanear redes disponibles
     print("\nAbriendo escáner de redes en una nueva ventana...")
-    abrir_en_ventana(f"airodump-ng --band a {tarjeta_red}", "Escáner de Redes")
-    input("\nObserva la ventana del escáner. Cuando tengas el BSSID y el canal de la red objetivo, vuelve aquí y presiona Enter para continuar.")
+    abrir_en_ventana(f"airodump-ng --band a {tarjeta_red}", "Escáner de Redes 2.4 GHz")
+    abrir_en_ventana(f"airodump-ng --band bg {tarjeta_red}", "Escáner de Redes 5.0 GHz")
+    input("\nObserva la ventana del escáner. Cuando tengas el BSSID y el canal de la red (CH) objetivo, vuelve aquí y presiona Enter para continuar.")
 
-    # Solicitar información de la red a auditar
+    # Solicitar información de la red a auditare
     bssid = input("\nIntroduce el BSSID de la red objetivo: ").strip()
     canal = input("Introduce el canal (CH) de la red objetivo: ").strip()
 
     # Monitorear la red específica
     print(f"\nAbriendo monitoreo de la red {bssid} en una nueva ventana...")
     abrir_en_ventana(f"airodump-ng --band a -c {canal} --bssid {bssid} {tarjeta_red}", "Monitoreo de Red")
-    input("\nObserva la ventana del monitoreo. Cuando identifiques el dispositivo objetivo, vuelve aquí y presiona Enter para continuar.")
+    print("Realiza prueba y error con los sigueintes dispositivos hasta encontrar el deseado.")
+    input("\nObserva la ventana del monitoreo. Cuando identifiques el dispositivo objetivo y anota l STATION, vuelve aquí y presiona Enter para continuar.")
 
     # Solicitar información del dispositivo objetivo
     station = input("\nIntroduce el STATION (dispositivo objetivo): ").strip()
