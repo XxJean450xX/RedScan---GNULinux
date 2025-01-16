@@ -28,6 +28,8 @@
     ```bash
     #Este es un bloque de codigo en bash
 
+    sudo apt update
+    sudo apt install xterm
     sudo apt-get install aircrack-ng
     ```
 3. Haz el script ejectuable
@@ -71,4 +73,11 @@
     #Enviando desautenticación al dispositivo 00:11:22:33:44:66...
 
     ```
+
+## Contribución
+
+Las contribuciones son bienvenidas. Si encuentras un error o tienes mejoras que sugerir, no dudes en abrir un issue o enviar un pull request.
+
+# Licencia
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
