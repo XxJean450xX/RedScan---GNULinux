@@ -39,31 +39,45 @@
     chmod +x RedScan.py
     ```
 
-## Uso
+## Guia de Uso
 
-1. Ejecuta el script con permisos de administrador (sudo):  
-    ```bash  
-    #Este es un bloque de codigo en bash
+# Guía de Uso
 
+Sigue estos pasos para utilizar el script de manera segura y eficiente. Recuerda que este proyecto es **exclusivamente educativo** y debe usarse con los permisos adecuados.
+
+
+1.  Ejecuta el script con permisos de administrador en tu terminal:  
+    ```bash
     sudo ./RedScan.py
     ```
-2. Sigue las instrucciones en pantalla para:
-    - Seleccionar tu tarjeta de red.
-    - Escanear redes disponibles.
-    - Introducir el BSSID y Canal de la red a auditar.
-    - Identificar y desautenticar dispositivos conectados a la red.
-3. **IMPORTANTE**
-    -Cuando se este desautenticando el dispositivo, enviandole ping durara todo lo que usted lo permita, si quiere parar el envio de ping oprima CTRL + C. Esto acabara la ejecucion.
+    
 
-4. Reactivar tu Red internet
-    -Al usar el programa se deshabilitara tu internet, para recuperar la conexion al finalizar el programa o por cualquier otro error ingrese:
-    ```bash  
-    #Este es un bloque de codigo en bash
 
+2.  El script te guiará por los siguientes pasos:
+    - **Seleccionar la tarjeta de red**: Verás las tarjetas disponibles y deberás elegir la que desees usar.
+    - **Escanear redes WiFi**: Se abrirán ventanas mostrando las redes disponibles.
+    - **Elegir la red objetivo**: Introduce el **BSSID** y el **canal (CH)** de la red que deseas auditar.
+    - **Monitorear dispositivos conectados**: Identifica los dispositivos en la red.
+    - **Desautenticar dispositivos**: Envía solicitudes de desautenticación (pings) a un dispositivo específico.
+    
+
+
+3.  Detener el Envío de Pings:
+
+    Mientras se envían pings para desautenticar un dispositivo, el proceso continuará hasta que lo detengas manualmente.  
+    Para detenerlo, presiona **CTRL + C** en la ventana correspondiente. Esto finalizará el proceso de desautenticación.
+
+
+4.  Reactivar tu Conexión a Internet
+    Durante el uso del programa, tu conexión a Internet será deshabilitada.  
+    Para restaurarla al finalizar el script (o en caso de error), ejecuta:  
+    ```bash
     airmon-ng stop {tarjeta_red}
     ```
-    Donde dice tarjeta_red ingrese el nombre de su tarjeta (wlo1, wla0, NIC...)
-    NOTA: Es el mismo nombre que ingreso de primeras.
+    Reemplaza **`{tarjeta_red}`** con el nombre de la tarjeta que seleccionaste al inicio (por ejemplo: `wlan0`, `wlo1`, etc.).
+
+    **Nota**: El nombre de la tarjeta es el mismo que elegiste en el primer paso.
+
 
 ## Ejemplo de salida:
 1. 
