@@ -36,7 +36,7 @@
     ```bash
     #Este es un bloque de codigo en bash
 
-    chmod +x wifi_audit.py
+    chmod +x RedScan.py
     ```
 
 ## Uso
